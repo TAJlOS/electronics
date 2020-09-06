@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    REST_SERVER_URL: "http://localhost:8080/",
+    REST_SERVER_URL: process.env.HEROKU_HOST || "http://localhost:8080/",
     catalog: {
       content: [],
       total_pages: JSON.parse(localStorage.getItem("total_pages")) || 0,
