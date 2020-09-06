@@ -6,7 +6,8 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    REST_SERVER_URL: process.env.HEROKU_HOST || "http://localhost:8080/",
+    REST_SERVER_URL:
+      process.env.VUE_APP_HEROKU_HOST || "http://localhost:8080/",
     catalog: {
       content: [],
       total_pages: JSON.parse(localStorage.getItem("total_pages")) || 0,
@@ -398,7 +399,6 @@ export const store = new Vuex.Store({
       let { data } = await Axios.get(
         context.state.REST_SERVER_URL + "api/processors/" + args
       );
-      console.log(data);
       context.commit("SET_PRODUCT_LIST", data.content);
       context.commit("SET_TOTAL_PAGES", data.totalPages);
     },
@@ -460,7 +460,6 @@ export const store = new Vuex.Store({
           headers: { Authorization: "Bearer " + context.state.jwtToken }
         }
       ).then(response => {
-        console.log(response);
         context.commit("SET_AUTHENTICATED", true);
         context.commit("SET_USER_ORDER_LIST", response.data);
       });

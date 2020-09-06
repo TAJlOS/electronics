@@ -7,7 +7,8 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "build": "cd frontend && npm run build"
+    "build-local": "cd frontend && npm run build",
+    "build": "cd frontend && npm run build-heroku"
   },
   "dependencies": {
     "axios": "^0.19.2",
