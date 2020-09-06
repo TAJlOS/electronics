@@ -14,6 +14,9 @@ fse.copy(sourceDir, staticDir, function(err) {
     console.error(err);
   } else {
     console.log("successfully move frontend build files from /dist to /static");
+    if (!fs.existsSync(templatesDir)){
+      fs.mkdirSync(templatesDir);
+    }
     moveIndexHtml();
   }
 });
